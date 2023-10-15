@@ -10,5 +10,6 @@ int _strlenc(const char *str);
 int print_37(void);
 int print_int(va_list args);
 int print_dec(va_list args);
+int print_bin(va_list val);
 
 #endif /* MAIN_H */
