@@ -1,5 +1,4 @@
-# include "main.h"
-
+#include "main.h"
 /**
  * rot13 - main function
  * @y: The argument pointer.
@@ -40,4 +39,3 @@ int print_rot13(va_list R)
 	}
 	return (count);
 }
-
