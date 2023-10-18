@@ -5,37 +5,36 @@
  *
  * Description: This function prints the rot13'ed string.
  *
- * Return: The total number of characters.
+ * Return: The total number of characters
  */
-int print_rot13(va_list R)
+
+int printf_rot13(va_list args)
 {
-	char alph[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	char rot13[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
-	int j, i = 0, count = 0, pl = 0;
-	char *s = va_arg(R, char*);
+	int i, j, counter = 0;
+	int k = 0;
+	char *s = va_arg(args, char*);
+	char alpha[] = {"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"};
+	char beta[] = {"nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"};
 
 	if (s == NULL)
-	{
 		s = "(null)";
-	}
-	while (s[i] != '\0')
+	for (i = 0; s[i]; i++)
 	{
-		pl = 0;
-		for (j = 0; alph[j] != '\0' && !pl; j++)
+		k = 0;
+		for (j = 0; alpha[j] && !k; j++)
 		{
-			if (s[i] == alph[j])
+			if (s[i] == alpha[j])
 			{
-				_putchar(rot13[j]);
-				count++;
-				pl = 1;
+				_putchar(beta[j]);
+				counter++;
+				k = 1;
 			}
 		}
-		if (!pl)
+		if (!k)
 		{
 			_putchar(s[i]);
-			count++;
+			counter++;
 		}
-		i++;
 	}
-	return (count);
+	return (counter);
 }

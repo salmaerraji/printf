@@ -5,6 +5,7 @@
  * @val: arguments.
  * Return: counter.
  */
+
 int printf_pointer(va_list val)
 {
 	void *p;

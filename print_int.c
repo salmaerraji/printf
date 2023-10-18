@@ -5,49 +5,91 @@
 
 /**
  * print_int - prints integer
- * @i: integer to be printed
- * Return: size
+ * args tp print
+ * Return: number of characters printed
  */
 
-int print_int(va_list i)
+int printf_int(va_list args)
 {
-int len, pow, j, digit, n, count, num;
-count = 0;
-n = va_arg(i, int);
-if (n != 0)
-{
-if (n < 0)
-{
-_putchar('-');
-count++;
-}
-num = n;
-len = 0;
-while (num != 0)
-{
-num /= 10;
-len++;
-}
-pow = 1;
-for (j = 1; j <= len - 1; j++)
-pow *= 10;
-for (j = 1; j <= len; j++)
-{
-digit = n / pow;
-if (n < 0)
-_putchar((digit * -1) + 48);
-else
-_putchar(digit + '0');
-count++;
-n -= (digit * pow);
-pow /= 10;
-}
-}
-else
-{
-_putchar('0');
-return (1);
-}
-return (count);
+	int n = va_arg(args, int);
+	int num, last = n % 10, digit, exp = 1;
+	int  i = 1;
+
+	n = n / 10;
+	num = n;
+
+	if (last < 0)
+	{
+		_putchar('-');
+		num = -num;
+		n = -n;
+		last = -last;
+		i++;
+	}
+	if (num > 0)
+	{
+		while (num / 10 != 0)
+		{
+			exp = exp * 10;
+			num = num / 10;
+		}
+		num = n;
+		while (exp > 0)
+		{
+			digit = num / exp;
+			_putchar(digit + '0');
+			num = num - (digit * exp);
+			exp = exp / 10;
+			i++;
+		}
+	}
+	_putchar(last + '0');
+
+	return (i);
 }
 
+/**
+ * printf_dec - prints decimal
+ * @args: argument to print
+ * Return: number of characters printed
+ */
+
+int printf_dec(va_list args)
+{
+	int n = va_arg(args, int);
+	int num, last = n % 10, digit;
+	int  i = 1;
+	int exp = 1;
+
+	n = n / 10;
+	num = n;
+
+	if (last < 0)
+	{
+		_putchar('-');
+		num = -num;
+		n = -n;
+		last = -last;
+		i++;
+	}
+	if (num > 0)
+	{
+		while (num / 10 != 0)
+		{
+			exp = exp * 10;
+			num = num / 10;
+		}
+		num = n;
+		while (exp > 0)
+		{
+			digit = num / exp;
+			_putchar(digit + '0');
+			num = num - (digit * exp);
+			exp = exp / 10;
+			i++;
+		}
+	}
+	_putchar(last + '0');
+
+	return (i);
+}

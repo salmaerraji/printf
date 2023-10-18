@@ -1,44 +1,46 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
 #include "main.h"
 
 /**
- * print_unsigned - prints unsigned
- * @d: unsigned to be printed
- * Return: size
+ * printf_unsigned - prints integer
+ * @args: argument to print
+ * Return: number of characters printed
  */
+int printf_unsigned(va_list args)
+{
+	unsigned int n = va_arg(args, unsigned int);
+	int num, last = n % 10, digit, exp = 1;
+	int  i = 1;
 
-int print_unsigned(va_list u)
-{
-unsigned int len, pow, j, digit, n, num;
-int count = 0;
-n = va_arg(u, unsigned int);
-if (n != 0)
-{
-num = n;
-len = 0;
-while (num != 0)
-{
-num /= 10;
-len++;
+	n = n / 10;
+	num = n;
+
+	if (last < 0)
+	{
+		_putchar('-');
+		num = -num;
+		n = -n;
+		last = -last;
+		i++;
+	}
+	if (num > 0)
+	{
+		while (num / 10 != 0)
+		{
+			exp = exp * 10;
+			num = num / 10;
+		}
+		num = n;
+		while (exp > 0)
+		{
+			digit = num / exp;
+			_putchar(digit + '0');
+			num = num - (digit * exp);
+			exp = exp / 10;
+			i++;
+		}
+	}
+	_putchar(last + '0');
+
+	return (i);
 }
-pow = 1;
-for (j = 1; j <= len - 1; j++)
-pow *= 10;
-for (j = 1; j <= len; j++)
-{
-digit = n / pow;
-_putchar(digit + '0');
-count++;
-n -= (digit * pow);
-pow /= 10;
-}
-}
-else
-{
-_putchar('0');
-return (1);
-}
-return (count);
-}
+

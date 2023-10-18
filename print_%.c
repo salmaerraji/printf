@@ -1,11 +1,10 @@
-
 #include "main.h"
 /**
  * print_37 - prints % signed
- * Return: integer
+ * Return: int.
  */
 
-int print_37(void)
+int printf_37(void)
 {
 	_putchar(37);
 	return (1);

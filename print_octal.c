@@ -1,44 +1,36 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
 #include "main.h"
 
 /**
  * print_octal - prints octal
- * @o: octal to be printed
- * Return: size
+ * @val: args
+ * Return: counter
  */
 
-int print_octal(va_list o)
+int printf_oct(va_list val)
 {
-unsigned int len, pow, j, digit, n, num;
-int count = 0;
-n = va_arg(o, unsigned int);
-if (n != 0)
-{
-num = n;
-len = 0;
-while (num != 0)
-{
-num /= 8;
-len++;
-}
-pow = 1;
-for (j = 1; j <= len - 1; j++)
-pow *= 8;
-for (j = 1; j <= len; j++)
-{
-digit = n / pow;
-_putchar(digit + '0');
-count++;
-n -= (digit * pow);
-pow /= 8;
-}
-}
-else
-{
-_putchar('0');
-return (1);
-}
-return (count);
+	int i;
+	int *array;
+	int counter = 0;
+	unsigned int num = va_arg(val, unsigned int);
+	unsigned int temp = num;
+
+	while (num / 8 != 0)
+	{
+		num /= 8;
+		counter++;
+	}
+	counter++;
+	array = malloc(counter * sizeof(int));
+
+	for (i = 0; i < counter; i++)
+	{
+		array[i] = temp % 8;
+		temp /= 8;
+	}
+	for (i = counter - 1; i >= 0; i--)
+	{
+		_putchar(array[i] + '0');
+	}
+	free(array);
+	return (counter);
 }
