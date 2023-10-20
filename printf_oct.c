@@ -1,11 +1,10 @@
 #include "main.h"
 
 /**
- * print_octal - prints octal
- * @val: args
- * Return: counter
+ * printf_oct - prints an octal number.
+ * @val: arguments.
+ * Return: counter.
  */
-
 int printf_oct(va_list val)
 {
 	int i;

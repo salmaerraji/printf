@@ -43,4 +43,3 @@ int printf_unsigned(va_list args)
 
 	return (i);
 }
-

@@ -1,11 +1,10 @@
 #include "main.h"
 
 /**
- * printf_pointer - prints a hexadecimal number.
+ * printf_pointer - prints an hexadecimal number.
  * @val: arguments.
  * Return: counter.
  */
-
 int printf_pointer(va_list val)
 {
 	void *p;

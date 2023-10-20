@@ -1,14 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdarg.h>
 #include "main.h"
 
 /**
- * print_int - prints integer
- * args tp print
+ * printf_int - prints integer
+ * @args: argument to print
  * Return: number of characters printed
  */
-
 int printf_int(va_list args)
 {
 	int n = va_arg(args, int);
@@ -93,3 +89,4 @@ int printf_dec(va_list args)
 
 	return (i);
 }
+
